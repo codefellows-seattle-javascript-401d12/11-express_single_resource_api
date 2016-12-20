@@ -26,7 +26,7 @@ describe('Artist Routes', function() {
       .send({invalid: 'invalid body'})
       .end((err, response) => {
         // if (err) return done(err);
-        expect(response.text).to.equal('bad request');
+        expect(response.text).to.equal('BadRequestError');
         expect(response.status).to.equal(400);
         done();
       });

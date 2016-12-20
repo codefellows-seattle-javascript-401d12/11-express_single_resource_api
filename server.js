@@ -8,7 +8,7 @@ const debug = require('debug')('music-artists:server');
 
 const app = express();
 const Artist = require('./model/music-artists.js');
-const PORT = process.env.PORT || 3000;
+const PORT = 3000; //process.env.PORT ||
 
 app.use(morgan('dev'));
 
@@ -44,6 +44,15 @@ app.use(function(err, req, res, next) {
   }
   err = createError(500, err.message);
   res.status(err.status).send(err.name);
+
+});
+
+app.delete('/api/artist', function(req, res, next) {
+  debug('DELETE: /api/artist');
+
+  Artist.deleteArtist(req.query.id)
+  .then( () => res.status(204).send())
+  .catch( err => next (err));
 
 });
 

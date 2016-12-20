@@ -31,3 +31,8 @@ Artist.fetchArtist = function(id) {
   debug('fetchArtist');
   return storage.fetchItem('artist', id);
 };
+
+Artist.deleteArtist = function(id) {
+  debug('deleteArtist');
+  return storage.deleteItem('artist', id);
+};
