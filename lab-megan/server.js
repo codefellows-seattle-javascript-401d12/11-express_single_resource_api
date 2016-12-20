@@ -36,8 +36,7 @@ app.post('/data/cheese', jsonParser, function(req, res, next) {
   .catch( err => next(err));
 });
 
-// app.use(function(err, req, res, next) { // TODO: ask about next not being used here
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) { // TODO: ask about next not being used here
   debug('error middleware');
   console.error(err.message);
 

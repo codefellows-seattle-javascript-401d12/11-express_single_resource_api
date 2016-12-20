@@ -40,25 +40,26 @@ describe('Cheese Routes', function() {
     });
   });
 
-  describe('DELETE: /data/cheese', function() {
-    // creating a cheese whose ID we can grab to delete for the test
-    before ( function(done) {
-      request.post('localhost:3000/data/cheese')
-      .send({ color: 'test color', pokableness: 'test pokableness'})
-      .end((err, res) => {
-        this.cheese = res.body;
-        done();
-      });
-    });
-    it('should delete a cheese', function(done) {
-      request.delete(`localhost:3000/data/cheese?id=${this.cheese.id}`)
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.status).to.equal(204);
-        done();
-      });
-    });
-  });
+  // NOTE: test for delete removed for moment, not specified in the lab for day 11
+  // describe('DELETE: /data/cheese', function() {
+  //   // creating a cheese whose ID we can grab to delete for the test
+  //   before ( function(done) {
+  //     request.post('localhost:3000/data/cheese')
+  //     .send({ color: 'test color', pokableness: 'test pokableness'})
+  //     .end((err, res) => {
+  //       this.cheese = res.body;
+  //       done();
+  //     });
+  //   });
+  //   it('should delete a cheese', function(done) {
+  //     request.delete(`localhost:3000/data/cheese?id=${this.cheese.id}`)
+  //     .end((err, res) => {
+  //       if (err) return done(err);
+  //       expect(res.status).to.equal(204);
+  //       done();
+  //     });
+  //   });
+  // });
 
   describe('GET request resulting in 404 error', function() {
     it('should return a 404 error when given an id for a missing or nonexistant file', function(done) {
