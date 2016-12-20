@@ -16,8 +16,8 @@ describe ('Student routes', () => {
       .end((err, response) => {
         if (err) return done(err);
         expect(response.status).to.equal(200);
-        expect(response.body).to.be.a('string');
-        student = JSON.parse(response.body);
+        expect(response.text).to.be.a('string');
+        student = JSON.parse(response.text);
         done();
       });
     });

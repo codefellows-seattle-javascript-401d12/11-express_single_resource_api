@@ -30,13 +30,13 @@ app.post('/api/student', parseJSON, (request, response, next) => {
 
   var student = new Student(request.body);
   storage.createItem('student', student)
-  .then(student => response.json(student))
+  .then(student => response.status(200).send(student))
   .catch(err => next(err));
 });
 
 app.delete('/api/student', (request, response, next) => {
   debug('DELETE: /api/student');
-  
+
   if (request.query.id) {
     storage.deleteItem('student', request.query.id)
     .then(() => response.status(204).send())
