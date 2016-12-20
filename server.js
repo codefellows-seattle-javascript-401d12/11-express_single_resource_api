@@ -37,7 +37,10 @@ app.delete('/api/dog', function(req, res, next) {
   debug('DELETE /api/dog');
 
   Dog.deleteDog(req.query.id)
-  .then( dog => res.json(dog))
+  .then( () => {
+    res.status(204);
+    res.end();
+  })
   .catch( err => next(err));
 });
 
