@@ -2,7 +2,7 @@
 
 const uuid = require('node-uuid');
 const createError = require('http-errors');
-const debug = require('debug')('music-artist:music-artist');
+const debug = require('debug')('music-artists:music-artists');
 const storage = require('../lib/storage.js');
 
 const Artist = module.exports = function(name, genre) {

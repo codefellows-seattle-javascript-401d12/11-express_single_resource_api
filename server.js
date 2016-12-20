@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 
-app.get('/test', function(res, req) {
+app.get('/test', function(req, res) {
   debug('GET: /test');
   res.json({'msg': 'connected via test route'});
 });
@@ -22,6 +22,14 @@ app.post('/api/artist', jsonParser, function(req, res, next) {
 
   Artist.createArtist(req.body)
   .then( artist => res.json(artist))//TODO double check thi
+  .catch( err => next (err));
+});
+
+app.get('/api/artist', function(req, res, next) {
+  debug('GET: /api/artist');
+
+  Artist.fetchArtist(req.query.id)
+  .then( artist => res.json(artist))
   .catch( err => next (err));
 });
 
@@ -36,7 +44,7 @@ app.use(function(err, req, res, next) {
   }
   err = createError(500, err.message);
   res.status(err.status).send(err.name);
-  
+
 });
 
 app.listen(PORT, () => {
