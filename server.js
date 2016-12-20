@@ -58,9 +58,9 @@ app.use(function(err, req, res, next) {
   if(err.status) {
     res.status(err.status).send(err.name);
     return;
-  };
+  }
 
-  err.createError(500, err.message);
+  err = createError(500, err.message);
   res.status(err.status).send(err.name);
 });
 
