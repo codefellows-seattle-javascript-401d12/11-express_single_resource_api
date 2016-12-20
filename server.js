@@ -36,6 +36,7 @@ app.delete('/api/pin', function(req, res, next) {
   .catch(err => next(err));
 });
 
+// eslint-disable-next-line
 app.use(function(err, req, res, next) {
   debug('error middleware');
   console.error(err.message);
