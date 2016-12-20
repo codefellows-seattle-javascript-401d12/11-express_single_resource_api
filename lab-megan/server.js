@@ -36,6 +36,13 @@ app.post('/data/cheese', jsonParser, function(req, res, next) {
   .catch( err => next(err));
 });
 
+app.delete('/data/cheese', function(req, res, next) {
+  debug('DELETE: /data/cheese');
+  Cheese.deleteCheese(req.query.id)
+  // NOTE: don't need .then statement?
+  .catch( err => next(err));
+});
+
 app.use(function(err, req, res, next) { // TODO: ask about next not being used here
   debug('error middleware');
   console.error(err.message);

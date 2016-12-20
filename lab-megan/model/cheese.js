@@ -32,3 +32,8 @@ Cheese.fetchCheese = function(id) {
   console.log('::: reached cheese.js fetchCheese');
   return storage.fetchItem('cheese', id);
 };
+
+Cheese.deleteCheese = function(id) {
+  debug('deleteCheese');
+  return storage.deleteItem('cheese', id);
+};
