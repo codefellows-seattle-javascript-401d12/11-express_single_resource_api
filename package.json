@@ -1,23 +1,23 @@
 {
-  "name": "08-vanilla_rest_api",
+  "name": "11-express_single_resource_api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "DEBUG='bev*' node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maschigokae/08-vanilla_rest_api.git"
+    "url": "git+https://github.com/maschigokae/11-express_single_resource_api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maschigokae/08-vanilla_rest_api/issues"
+    "url": "https://github.com/maschigokae/11-express_single_resource_api/issues"
   },
-  "homepage": "https://github.com/maschigokae/08-vanilla_rest_api#readme",
+  "homepage": "https://github.com/maschigokae/11-express_single_resource_api#readme",
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
