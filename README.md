@@ -1,4 +1,4 @@
-### Express Single Resource API
+## Express Single Resource API
 
 This is a fun project where we created refactored our Vanilla REST API to use Express.js! Woo!
 
@@ -39,7 +39,7 @@ X-Powered-By: Express
 
 After making a POST, you can make a GET request.
 
-1. Copy the id from your POST request above. Add it as a querystring to your GET request, like this example: ` http localhost:3000/api/song?id=465251f0-c667-11e6-979e-15e9bd7f18fe`
+1. Copy the id from your POST request above. Add it as a querystring to your GET request, like this example: `http localhost:3000/api/song?id=465251f0-c667-11e6-979e-15e9bd7f18fe`
 
 2. You should get a JSON response with a description, id, and title with a `200` status code, like this example:
 
@@ -65,10 +65,10 @@ After making a GET or a POST, you can make a DELETE request.
 
 1. Copy the id from your POST/GET request above. Add it as a querystring to your DELETE request, like this example: `http DELETE localhost:3000/api/song?id=465251f0-c667-11e6-979e-15e9bd7f18fe`
 
-2. You should get a JSON response with a description, id, and title with a `200` status code, like this example:
+2. You should get a JSON response with a description, id, and title, like this example:
 
 ``` javascript
-HTTP/1.1 200 OK
+HTTP/1.1 204 
 Connection: keep-alive
 Content-Length: 0
 Content-Type: application/json
