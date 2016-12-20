@@ -66,7 +66,8 @@ describe('Cheese Routes', function() {
       .end((err, res) => {
         // if (err) return done(err);
         expect(res.status).to.equal(404);
-        expect(res.text).to.equal('File not found.');
+        // expect(res.text).to.equal('NotFoundError');
+        expect(res.text).to.include('NotFoundError');
         done();
       });
     });
@@ -89,7 +90,8 @@ describe('Cheese Routes', function() {
       request.get('localhost:3000/data/cheese?id=')
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        expect(res.text).to.equal('BadRequestError');
+        // expect(res.text).to.equal('BadRequestError');
+        expect(res.text).to.include('BadRequestError');
         done();
       });
     });
@@ -101,7 +103,8 @@ describe('Cheese Routes', function() {
       .send({ shape: 'test shape', texture: 'test texture'})
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        expect(res.text).to.equal('BadRequestError');
+        // expect(res.text).to.equal('BadRequestError');
+        expect(res.text).to.include('BadRequestError');
         done();
       });
     });

@@ -27,6 +27,8 @@ exports.fetchItem = function(schemaName, id) {
   if (!schemaName) return Promise.reject(createError(400, 'expected schema name'));
   if (!id) return Promise.reject(createError(400, 'expected id'));
 
+  console.log('::: reached storage.js fetchItem');
+
   return fs.readFileProm(`${__dirname}/../data/${schemaName}/${id}.json`)
   .then(data => {
     try {

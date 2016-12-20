@@ -29,5 +29,6 @@ Cheese.createCheese = function(_cheese) {
 
 Cheese.fetchCheese = function(id) {
   debug('fetchCheese');
+  console.log('::: reached cheese.js fetchCheese');
   return storage.fetchItem('cheese', id);
 };
