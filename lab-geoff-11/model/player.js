@@ -1,7 +1,6 @@
 'use strict';
 
 const createError = require('http-errors');
-
 const debug = require('debug')('mnp:player');
 
 const storage = require('../lib/storage.js');
