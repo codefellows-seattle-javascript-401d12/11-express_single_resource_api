@@ -1,0 +1,40 @@
+{
+  "name": "templates",
+  "version": "1.0.0",
+  "description": "Base files for node.js projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test",
+    "start": "DEBUG='mnp*' node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geoffsimons/templates.git"
+  },
+  "keywords": [
+    "nodejs",
+    "template"
+  ],
+  "author": "Geoff Simons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geoffsimons/templates/issues"
+  },
+  "homepage": "https://github.com/geoffsimons/templates#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^3.0.1",
+    "superagent": "^3.3.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "debug": "^2.4.5",
+    "express": "^4.14.0",
+    "http-errors": "^1.5.1",
+    "morgan": "^1.7.0",
+    "node-uuid": "^1.4.7"
+  }
+}
