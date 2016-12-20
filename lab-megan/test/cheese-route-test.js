@@ -6,9 +6,6 @@ const expect = require('chai').expect;
 require('../server.js');
 
 describe('Cheese Routes', function() {
-  // var cheese = null;
-  // var cheese = request.post('localhost:3000/data/cheese')
-  // .send({ color: 'test color', pokableness: 'test pokableness'});
 
   describe('POST: /data/cheese', function() {
     it('Should return a cheese', function(done) {
@@ -19,7 +16,6 @@ describe('Cheese Routes', function() {
         expect(res.status).to.equal(200);
         expect(res.body.color).to.equal('test color');
         expect(res.body.pokableness).to.equal('test pokableness');
-        // cheese = res.body;
         done();
       });
     });
@@ -29,7 +25,6 @@ describe('Cheese Routes', function() {
     it('should return a cheese', function(done) {
       request.post('localhost:3000/data/cheese')
       .send({ color: 'test color', pokableness: 'test pokableness'})
-      // request.get(`localhost:3000/data/cheese?id=${cheese.id}`)
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(200);
@@ -40,7 +35,6 @@ describe('Cheese Routes', function() {
     });
   });
 
-  // NOTE: test for delete removed for moment, not specified in the lab for day 11
   describe('DELETE: /data/cheese', function() {
     // creating a cheese whose ID we can grab to delete for the test
     before ( function(done) {
@@ -65,9 +59,7 @@ describe('Cheese Routes', function() {
     it('should return a 404 error when given an id for a missing or nonexistant file', function(done) {
       request.get('localhost:3000/data/cheese?id=404')
       .end((err, res) => {
-        // if (err) return done(err);
         expect(res.status).to.equal(404);
-        // expect(res.text).to.equal('NotFoundError');
         expect(res.text).to.include('NotFoundError');
         done();
       });
@@ -78,9 +70,7 @@ describe('Cheese Routes', function() {
     it('should return a 404 error when given an id for an incorrect path', function(done) {
       request.get('localhost:3000/data/bread?id=404')
       .end((err, res) => {
-        // if (err) return done(err);
         expect(res.status).to.equal(404);
-        // expect(res.text).to.equal('Cannot GET /data/bread?id=404');
         done();
       });
     });
@@ -91,7 +81,6 @@ describe('Cheese Routes', function() {
       request.get('localhost:3000/data/cheese?id=')
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        // expect(res.text).to.equal('BadRequestError');
         expect(res.text).to.include('BadRequestError');
         done();
       });
@@ -104,7 +93,6 @@ describe('Cheese Routes', function() {
       .send({ shape: 'test shape', texture: 'test texture'})
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        // expect(res.text).to.equal('BadRequestError');
         expect(res.text).to.include('BadRequestError');
         done();
       });

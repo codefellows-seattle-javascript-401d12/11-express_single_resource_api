@@ -5,8 +5,6 @@ const fs = Promise.promisifyAll(require('fs'), {suffix: 'Prom'});
 const createError = require('http-errors');
 const debug = require('debug')('note:storage');
 
-// const storage = {};
-
 module.exports = exports = {};
 
 exports.createItem = function(schemaName, item) {
