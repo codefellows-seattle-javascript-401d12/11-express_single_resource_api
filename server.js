@@ -35,6 +35,7 @@ app.delete('/api/ski', function(req, res, next) {
     .catch( err => next(err));
 });
 
+// eslint-disable-next-line
 app.use(function(err, req, res, next) {
   debug('error handler middleware');
 
