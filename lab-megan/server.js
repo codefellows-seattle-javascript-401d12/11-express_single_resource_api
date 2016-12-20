@@ -21,7 +21,6 @@ app.get('/test', function(req, res) {
 
 app.get('/data/cheese', function(req, res, next) {
   debug('GET: /data/cheese');
-  console.log('::: reached server.js app.get');
   // Cheese.fetchCheese(req.body)
   Cheese.fetchCheese(req.query.id)
   .then( cheese => res.json(cheese))
@@ -30,7 +29,6 @@ app.get('/data/cheese', function(req, res, next) {
 
 app.post('/data/cheese', jsonParser, function(req, res, next) {
   debug('POST: /data/cheese');
-  console.log('inside of app.post on server.js file');
   Cheese.createCheese(req.body)
   .then( cheese => res.json(cheese))
   .catch( err => next(err));
@@ -38,8 +36,9 @@ app.post('/data/cheese', jsonParser, function(req, res, next) {
 
 app.delete('/data/cheese', function(req, res, next) {
   debug('DELETE: /data/cheese');
+  res.status(204).send();
   Cheese.deleteCheese(req.query.id)
-  // NOTE: don't need .then statement?
+  .then()
   .catch( err => next(err));
 });
 

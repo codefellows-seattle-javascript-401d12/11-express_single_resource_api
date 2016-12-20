@@ -10,7 +10,6 @@ const debug = require('debug')('note:storage');
 module.exports = exports = {};
 
 exports.createItem = function(schemaName, item) {
-  console.log('::: inside exports.createItem');
   debug('createItem');
 
   if (!schemaName) return Promise.reject(createError(400, 'expected schema name'));
@@ -26,8 +25,6 @@ exports.fetchItem = function(schemaName, id) {
   debug('fetchItem');
   if (!schemaName) return Promise.reject(createError(400, 'expected schema name'));
   if (!id) return Promise.reject(createError(400, 'expected id'));
-
-  console.log('::: reached storage.js fetchItem');
 
   return fs.readFileProm(`${__dirname}/../data/${schemaName}/${id}.json`)
   .then(data => {
@@ -49,6 +46,8 @@ exports.deleteItem = function(schemaName, id) {
 
   // delete the item
   return fs.unlinkProm(`${__dirname}/../data/${schemaName}/${id}.json`)
-  // no then statement
+  .then( () => {
+    // TODO: what goes here??
+  })
   .catch( err => Promise.reject(createError(500, err.message)));
 };
