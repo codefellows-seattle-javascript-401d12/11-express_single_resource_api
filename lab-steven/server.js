@@ -29,3 +29,11 @@ app.post('/api/student', parseJSON, (request, response, next) => {
   .then(student => response.json(student))
   .catch(err => next(err));
 });
+
+app.delete('/api/student', (request, response, next) => {
+  if (request.query.id) {
+    storage.deleteItem('student', request.query.id)
+    .then(() => response.status(204).send())
+    .catch(err => next(err));
+  }
+});
