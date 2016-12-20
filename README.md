@@ -46,7 +46,7 @@ In an new terminal window, send a `DELETE` request by using the command
 Example: `http DELETE localhost:8000/api/dog?id=00000000-c303-11e6-a4a3-73422de980bc`
 The a successful response should return a `204` status code with no content.
 
-![DELETE request screenshot](/assests/delete-response-screenshot.png)
+![DELETE request screenshot](/assets/delete-response-screenshot.png)
 
 ## Closing server
 

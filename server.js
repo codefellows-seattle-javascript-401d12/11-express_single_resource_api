@@ -44,11 +44,13 @@ app.delete('/api/dog', function(req, res, next) {
   .catch( err => next(err));
 });
 
+// eslint-disable-next-line
 app.put('/api/dog', jsonParser, function(req, res, next) {
   debug('PUT: /api/dog');
 
 });
 
+// eslint-disable-next-line
 app.use(function(err, req, res, next) {
   debug('error middleware');
   console.error(err.message);
