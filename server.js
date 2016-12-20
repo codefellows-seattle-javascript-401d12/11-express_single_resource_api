@@ -13,6 +13,14 @@ const PORT = 3000;
 
 app.use(morgan('dev'));
 
+app.post('/api/bev', jsonParser, function(req, res, next) {
+  debug('POST: api/bev');
+
+  BEV.createVehicle(req.body)
+  .then( vehicle => res.json(vehicle))
+  .catch( err => next(err));
+});
+
 app.listen(PORT, () => {
   console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
