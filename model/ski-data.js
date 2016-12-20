@@ -33,3 +33,9 @@ SkiData.getData = function(_id) {
 
   return data.getItem('skiData', _id);
 };
+
+SkiData.deleteData = function(_id) {
+  debug('deleteData');
+
+  return data.deleteItem('skiData', _id);
+};
