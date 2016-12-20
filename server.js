@@ -7,7 +7,6 @@ const jsonParser = require('body-parser').json();
 const debug = require('debug')('song:server');
 
 const Song = require('./model/song');
-const storage = require('./lib/storage.js');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -38,6 +37,7 @@ app.delete('/api/song', (req, res, next) => {
   .catch( err => next(err));
 });
 
+// eslint-disable-next-line
 app.use(function(err, req, res, next) {
   debug('error middleware');
   console.error(err.message);
