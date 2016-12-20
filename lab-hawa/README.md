@@ -1,6 +1,6 @@
 __Single Resource Express API__
 ======
-This server-side application creates a single resource REST API inplementing [Express.js](http://expressjs.com/) which allows the user to POST, GET and DELETE requests via the terminal.
+This server-side application creates a single resource REST API implementing [Express.js](http://expressjs.com/) which allows the user to POST, GET and DELETE requests via the terminal.
 
 ---
 ## Cloning the Repository
