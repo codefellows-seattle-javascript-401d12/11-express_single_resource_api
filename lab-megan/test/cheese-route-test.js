@@ -78,7 +78,7 @@ describe('Cheese Routes', function() {
       .end((err, res) => {
         // if (err) return done(err);
         expect(res.status).to.equal(404);
-        expect(res.text).to.equal('File not found.');
+        // expect(res.text).to.equal('Cannot GET /data/bread?id=404');
         done();
       });
     });
@@ -89,7 +89,7 @@ describe('Cheese Routes', function() {
       request.get('localhost:3000/data/cheese?id=')
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        expect(res.text).to.equal('Bad request.');
+        expect(res.text).to.equal('BadRequestError');
         done();
       });
     });
@@ -101,7 +101,7 @@ describe('Cheese Routes', function() {
       .send({ shape: 'test shape', texture: 'test texture'})
       .end((err, res) => {
         expect(res.status).to.equal(400);
-        expect(res.text).to.equal('Bad request.');
+        expect(res.text).to.equal('BadRequestError');
         done();
       });
     });
