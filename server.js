@@ -3,7 +3,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const createError = require('http-errors');
-const jsonParser = require('body-parser');
+const jsonParser = require('body-parser').json();
 const debug = require('debug')('bev:server');
 
 const app = express();
