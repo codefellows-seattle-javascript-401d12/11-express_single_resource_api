@@ -1,4 +1,4 @@
-# Vanilla REST api
+# Express Single Resource API
 
 This express single resource API allows a user to make GET, POST, and DELETE requests to the Artist object. The user can POST a new Artist name and genre, receive an id, and can delete the Artist by that id.
 
