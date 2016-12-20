@@ -18,7 +18,7 @@ exports.createItem = function(schemaName, item) {
   var data = JSON.stringify(item);
   return fs.writeFileProm(`${__dirname}/../data/${schemaName}/${item.id}.json`, data)
   .then(() => Promise.resolve(data))
-  .catch(err => Promise.reject(err));
+  .catch(err => Promise.reject(createError(500, err.message)));
 };
 
 exports.getItem = function(schemaName, id) {
@@ -29,7 +29,7 @@ exports.getItem = function(schemaName, id) {
 
   return fs.readFileProm(`${__dirname}/../data/${schemaName}/${id}.json`)
   .then(data => Promise.resolve(data.toString()))
-  .catch(err => Promise.reject(err));
+  .catch(err => Promise.reject(createError(404, err.message)));
 };
 
 exports.deleteItem = function(schemaName, id) {
@@ -40,7 +40,7 @@ exports.deleteItem = function(schemaName, id) {
 
   return fs.unlinkProm(`${__dirname}/../data/${schemaName}/${id}.json`)
   .then(() => Promise.resolve())
-  .catch(err => Promise.reject(err));
+  .catch(err => Promise.reject(createError(404, err.message)));
 };
 
 exports.getAllItems = function(schemaName) {
@@ -50,5 +50,5 @@ exports.getAllItems = function(schemaName) {
 
   return fs.readdirProm(`${__dirname}/../data/${schemaName}`)
   .then(arrayOfFiles => Promise.resolve(arrayOfFiles.toString().slice(9).split('.json').join('').split(',').filter(element => element !== '.json')))
-  .catch(err => Promise.reject(err));
+  .catch(err => Promise.reject(createError(500, err.message)));
 };
