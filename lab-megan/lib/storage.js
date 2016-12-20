@@ -10,6 +10,7 @@ const storage = {};
 module.exports = exports = {};
 
 exports.createItem = function(schemaName, item) {
+  console.log('::: inside exports.createItem');
   debug('createItem');
 
   if (!schemaName) return Promise.reject(createError(400, 'expected schema name'));
@@ -29,7 +30,7 @@ exports.fetchItem = function(schemaName, id) {
   return fs.readFileProm(`${__dirname}/../data/${schemaName}/${id}.json`)
   .then(data => {
     try {
-      let item = JSON.parse(data.toString())
+      let item = JSON.parse(data.toString());
       return item;
     } catch (err) {
       return Promise.reject(createError(500, err.message));

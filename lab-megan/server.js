@@ -19,9 +19,16 @@ app.get('/test', function(req, res) {
   res.json({ msg: 'test route worked' });
 });
 
+app.get('/data/cheese', function(req, res, next) {
+  debug('GET: /data/cheese');
+  Cheese.fetchCheese(req.body)
+  .then( cheese => res.json(cheese))
+  .catch( err => next(err));
+});
+
 app.post('/data/cheese', jsonParser, function(req, res, next) {
   debug('POST: /data/cheese');
-
+  console.log('inside of app.post on server.js file');
   Cheese.createCheese(req.body)
   .then( cheese => res.json(cheese))
   .catch( err => next(err));
