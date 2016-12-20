@@ -1,0 +1,38 @@
+{
+  "name": "11-express_single_resource_api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG='ski*' node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanheemstra/11-express_single_resource_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathanheemstra/11-express_single_resource_api/issues"
+  },
+  "homepage": "https://github.com/jonathanheemstra/11-express_single_resource_api#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.12.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "mocha": "^3.2.0",
+    "superagent": "^3.3.1"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "debug": "^2.4.5",
+    "express": "^4.14.0",
+    "http-errors": "^1.5.1",
+    "morgan": "^1.7.0",
+    "node-uuid": "^1.4.7"
+  }
+}
