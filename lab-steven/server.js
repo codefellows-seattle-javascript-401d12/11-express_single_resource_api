@@ -3,6 +3,7 @@
 const express = require('express');
 const parseJSON = require('body-parser').json();
 const morgan = require('morgan');
+const createError = require('http-errors');
 const debug = require('debug')('student:server');
 const Student = require('./model/student-constructor.js');
 const storage = require('./lib/storage.js');
@@ -42,6 +43,20 @@ app.delete('/api/student', (request, response, next) => {
     .then(() => response.status(204).send())
     .catch(err => next(err));
   }
+});
+
+app.use((err, request, response, next) => { //eslint-disable-line
+  debug('Middleware error function.');
+
+  console.error(err.message);
+
+  if(err.status) {
+    response.status(err.status).send(err.name);
+    return;
+  }
+
+  err = createError(500, err.message);
+  response.status(err.status).send(err.name);
 });
 
 app.listen(PORT, () => {
