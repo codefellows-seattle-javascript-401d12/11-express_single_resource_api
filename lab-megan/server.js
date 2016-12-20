@@ -7,7 +7,7 @@ const jsonParser = require('body-parser').json();
 const debug = require('debug')('cheese:server');
 
 const Cheese = require('./model/cheese');
-const storage = require('./lib/storage.js');
+// const storage = require('./lib/storage.js');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -21,7 +21,9 @@ app.get('/test', function(req, res) {
 
 app.get('/data/cheese', function(req, res, next) {
   debug('GET: /data/cheese');
-  Cheese.fetchCheese(req.body)
+  console.log('::: reached server.js app.get');
+  // Cheese.fetchCheese(req.body)
+  Cheese.fetchCheese(req.query.id)
   .then( cheese => res.json(cheese))
   .catch( err => next(err));
 });
@@ -34,7 +36,8 @@ app.post('/data/cheese', jsonParser, function(req, res, next) {
   .catch( err => next(err));
 });
 
-app.use(function(err, req, res, next) {
+// app.use(function(err, req, res, next) { // TODO: ask about next not being used here
+app.use(function(err, req, res) {
   debug('error middleware');
   console.error(err.message);
 

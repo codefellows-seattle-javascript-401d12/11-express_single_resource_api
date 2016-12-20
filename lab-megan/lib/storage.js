@@ -5,7 +5,7 @@ const fs = Promise.promisifyAll(require('fs'), {suffix: 'Prom'});
 const createError = require('http-errors');
 const debug = require('debug')('note:storage');
 
-const storage = {};
+// const storage = {};
 
 module.exports = exports = {};
 
@@ -26,6 +26,8 @@ exports.fetchItem = function(schemaName, id) {
   debug('fetchItem');
   if (!schemaName) return Promise.reject(createError(400, 'expected schema name'));
   if (!id) return Promise.reject(createError(400, 'expected id'));
+
+  console.log('::: reached storage.js fetchItem');
 
   return fs.readFileProm(`${__dirname}/../data/${schemaName}/${id}.json`)
   .then(data => {
