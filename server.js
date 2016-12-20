@@ -33,6 +33,14 @@ app.get('/api/dog', function(req, res, next) {
   .catch( err => next(err));
 });
 
+app.delete('/api/dog', function(req, res, next) {
+  debug('DELETE /api/dog');
+
+  Dog.deleteDog(req.query.id)
+  .then( dog => res.json(dog))
+  .catch( err => next(err));
+});
+
 app.use(function(err, req, res, next) {
   debug('error middleware');
   console.error(err.message);

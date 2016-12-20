@@ -114,3 +114,10 @@ $RECYCLE.BIN/
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
+
+
+# exclude everything
+data/*
+
+# exception to the rule
+!data/.gitkeep 

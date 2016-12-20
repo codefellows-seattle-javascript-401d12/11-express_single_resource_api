@@ -35,3 +35,9 @@ Dog.fetchDog = function(id) {
 
   return storage.fetchItem('dog', id);
 };
+
+Dog.deleteDog = function(id) {
+  debug('deleteDog');
+
+  return storage.deleteItem('dog', id);
+};
