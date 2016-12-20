@@ -1,14 +1,17 @@
 'use strict';
 
-const http = require('http');
-const Router = require('./lib/router.js');
+const express = require('express');
+const morgan = require('morgan');
+const createError = require('http-errors');
+const jsonParser = require('body-parser').json();
+const debug = require('debug')('pin:server');
+
+const app = express();
+const Pin = require('./model/pin.js');
 const PORT = process.env.PORT || 3000;
-const router = new Router();
 
-require('./route/pin-route.js')(router);
+app.use(morgan('dev'));
 
-const server = http.createServer(router.route());
-
-server.listen(PORT, () => {
-  console.log('server running:', PORT);
+app.listen(PORT, () => {
+  console.log(`server running: ${PORT}`);
 });
