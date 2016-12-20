@@ -11,6 +11,8 @@ const BEV = require('./model/bevs.js');
 
 const PORT = 3000;
 
+app.use(morgan('dev'));
+
 app.listen(PORT, () => {
   console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
