@@ -10,7 +10,7 @@ This is a basic Express API app that allows a developer to POST, GET and DELETE 
 
 * You will also need to run the command `brew install httpie`. For this app, the requests used in the terminal are formatted via HTTPie CLI.
 
-* Open 2 panes in your terminal to get started.
+* Open 2 panes in your terminal to get started. You should see response status codes in both terminal panes.
 
 * Be sure that you are in the root of the repo directory before attempting to initiate the port to the server. To do this, run `node server.js` in the first terminal pane.
   * `server running:` followed by your PORT number should be logged in the terminal
