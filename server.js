@@ -21,7 +21,7 @@ app.post('/api/artist', jsonParser, function(req, res, next) {
   debug('POST: /api/artist');
 
   Artist.createArtist(req.body)
-  .then( artist => res.json(artist))//TODO double check thi
+  .then( artist => res.json(artist))
   .catch( err => next (err));
 });
 
