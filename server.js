@@ -34,7 +34,7 @@ app.get('/api/dog', function(req, res, next) {
 });
 
 app.delete('/api/dog', function(req, res, next) {
-  debug('DELETE /api/dog');
+  debug('DELETE: /api/dog');
 
   Dog.deleteDog(req.query.id)
   .then( () => {
@@ -42,6 +42,11 @@ app.delete('/api/dog', function(req, res, next) {
     res.end();
   })
   .catch( err => next(err));
+});
+
+app.put('/api/dog', jsonParser, function(req, res, next) {
+  debug('PUT: /api/dog');
+
 });
 
 app.use(function(err, req, res, next) {
