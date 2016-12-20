@@ -7,7 +7,7 @@ const jsonParser = require('body-parser');
 const debug = require('debug')('bev:server');
 
 const app = express();
-const BEV = require('./model/bev.js');
+const BEV = require('./model/bevs.js');
 
 const PORT = 3000;
 
