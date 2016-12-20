@@ -6,7 +6,7 @@ const debug = require('debug')('joke:joke');
 const storage = require('../lib/diskStorage.js');
 
 const Joke = module.exports = function(setup, punchline) {
-  debug('joke constructor'); //just gives a name
+  debug('joke constructor');
 
   if (!setup) throw createError(400, 'bad request');
   if (!punchline) throw createError(400, 'bad request');
@@ -17,8 +17,8 @@ const Joke = module.exports = function(setup, punchline) {
   return;
 };
 
-Joke.createJoke = function(_joke) { //we'll use 'joke' for something else - don't want a conflict
-  debug('createJoke'); //just helps us know where the debug is coming from.
+Joke.createJoke = function(_joke) {
+  debug('createJoke');
 
   try {
     let joke = new Joke(_joke.setup, _joke.punchline);
@@ -26,7 +26,7 @@ Joke.createJoke = function(_joke) { //we'll use 'joke' for something else - don'
   } catch (err) {
     return Promise.reject(err);
   }
-};//this is a static method - not attached to constructor - a prototype method would be on every instance.
+};
 
 Joke.fetchJoke = function(id) {
   debug('fetchJoke');

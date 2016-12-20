@@ -1,24 +1,24 @@
 'use strict';
 
 const express = require('express');
-const morgan = require('morgan'); //provides additional debugging inc. route times
+const morgan = require('morgan');
 const createError = require('http-errors');
 const jsonParser = require('body-parser').json();
-const debug = require('debug')('joke:server'); //name of app:name of module - can name it anything
+const debug = require('debug')('joke:server');
 
-const app = express(); //it's a convention/best practice
-app.disable('x-powered-by'); //stupid
+const app = express();
+app.disable('x-powered-by');
 
 const Joke = require('./model/joke.js');
 const PORT = process.env.PORT || 2000;
 
-app.use(morgan('dev')); //this adds morgan middleware every route - we don't have to call it like we do jsonParser below. //logging happens through morgan
+app.use(morgan('dev'));
 
-app.listen(PORT, () => { //called "lexical error function"
+app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-app.post('/api/joke', jsonParser, function(req, res, next) { //'next' isn't strictly necessary. //callback is last function. //stuff in middle is... middleware
+app.post('/api/joke', jsonParser, function(req, res, next) {
   debug('POST: /api/joke');
 
   Joke.createJoke(req.body)
@@ -31,7 +31,7 @@ app.get('/api/joke', function(req, res, next) {
 
   Joke.fetchJoke(req.query.id)
   .then( joke => res.json(joke))
-  .catch( err => next(err)); //passes it down to our error-handling function?
+  .catch( err => next(err));
 });
 
 app.delete('/api/joke', function(req, res, next) {
@@ -42,7 +42,7 @@ app.delete('/api/joke', function(req, res, next) {
     res.status(204);
     res.end();
   })
-  .catch( err => next(err)); //passes it down to our error-handling function?
+  .catch( err => next(err)); 
 });
 
 app.use(function(err, req, res, next) { //eslint-disable-line

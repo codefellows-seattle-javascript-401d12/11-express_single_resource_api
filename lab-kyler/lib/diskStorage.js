@@ -19,7 +19,7 @@ exports.storeItem = (schema, item) => {
 
 exports.fetchItem = (schema, id) => {
   if (!schema) return Promise.reject(createError(400, 'expected schema'));
-  if (!id) return exports.enumerate(schema); //get list
+  if (!id) return exports.enumerate(schema);
 
   return fs.readFileProm(`${__dirname}/../data/${schema}/${id}.json`)
   .then (data => JSON.parse(data.toString()))
