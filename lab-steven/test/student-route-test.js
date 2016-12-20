@@ -16,9 +16,9 @@ describe ('Student routes', () => {
       .send({name: 'Steven', age: '30'})
       .end((err, response) => {
         if (err) return done(err);
+        student = response.body;
         expect(response.status).to.equal(200);
-        expect(response.text).to.be.a('string');
-        student = JSON.parse(response.text);
+        expect(response.body).to.be.an('object');
         done();
       });
     });
@@ -53,7 +53,6 @@ describe ('Student routes', () => {
       .get(`localhost:${PORT}/api/student?id=${student.id}`)
       .end((err, response) => {
         if (err) return done(err);
-        response.body = JSON.parse(response.body);
         expect(response.status).to.equal(200);
         expect(response.body.name).to.equal('Steven');
         expect(response.body.age).to.equal('30');

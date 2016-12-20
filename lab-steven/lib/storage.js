@@ -17,7 +17,7 @@ exports.createItem = function(schemaName, item) {
 
   var data = JSON.stringify(item);
   return fs.writeFileProm(`${__dirname}/../data/${schemaName}/${item.id}.json`, data)
-  .then(() => Promise.resolve(data))
+  .then(() => Promise.resolve(item))
   .catch(err => Promise.reject(createError(500, err.message)));
 };
 
@@ -28,7 +28,7 @@ exports.getItem = function(schemaName, id) {
   if (!id) return Promise.reject(createError(400, 'No ID provided.'));
 
   return fs.readFileProm(`${__dirname}/../data/${schemaName}/${id}.json`)
-  .then(data => Promise.resolve(data.toString()))
+  .then(data => Promise.resolve(JSON.parse(data.toString())))
   .catch(err => Promise.reject(createError(404, err.message)));
 };
 

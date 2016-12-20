@@ -31,7 +31,7 @@ app.post('/api/student', parseJSON, (request, response, next) => {
 
   var student = new Student(request.body);
   storage.createItem('student', student)
-  .then(student => response.status(200).send(student))
+  .then(student => response.status(200).json(student))
   .catch(err => next(err));
 });
 
