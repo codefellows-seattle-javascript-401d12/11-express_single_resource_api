@@ -29,4 +29,9 @@ Player.fetch = function(id) {
   return storage.fetchItem('player', id);
 };
 
+Player.delete = function(id) {
+  debug('delete');
+  return storage.deleteItem('player', id);
+};
+
 module.exports = Player;

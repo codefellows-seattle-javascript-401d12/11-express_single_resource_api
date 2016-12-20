@@ -28,7 +28,7 @@ exports.fetchItem = function(collection, id) {
     let item = JSON.parse(data.toString());
     return item;
   })
-  .catch( err => Promise.reject(createError(500, err.message)));
+  .catch( err => Promise.reject(createError(404, err.message)));
 };
 
 exports.deleteItem = function(collection, id) {
