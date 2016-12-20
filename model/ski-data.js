@@ -3,6 +3,7 @@
 const uuid = require('node-uuid');
 const debug = require('debug')('ski:ski-data');
 const createError = require('http-errors');
+const data = require('../lib/data.js');
 
 
 const SkiData = module.exports = function(location, rating) {
@@ -21,14 +22,14 @@ SkiData.createData = function(_data) {
 
   try {
     let skiData = new SkiData (_data.location, _data.rating);
-    // TODO: return data.createItem('skiData', skiData)
+    return data.setItem('skiData', skiData);
   } catch(err) {
     return Promise.reject(err);
   }
 };
 
-SkiData.getData = function() {
+SkiData.getData = function(_id) {
   debug('getData');
 
-  // TODO: return item from data.getItem('skiData' _id)
+  return data.getItem('skiData', _id);
 };
