@@ -10,10 +10,10 @@ const storage = require('../lib/storage.js');
 const BEV = module.exports = function(vehicle, info, range) {
   debug('BEV constructor');
 
-  if (!vehicle) throw new Error('expected vehicle model name');
-  if (!info) throw new Error('expected vehicle model info');
-  if (!range) throw new Error('expected vehicle model range');
-  if (isNaN(range)) throw new Error('expected range to be a number');
+  if (!vehicle) throw createError(400, 'expected vehicle model name');
+  if (!info) throw createError(400, 'expected vehicle model info');
+  if (!range) throw createError(400, 'expected vehicle model range');
+  if (isNaN(range)) throw createError(400, 'expected range to be a number');
 
   this.id = uuid.v1();
   // vehicle make, model
@@ -44,4 +44,9 @@ BEV.fetchVehicle = function(id) {
 BEV.fetchAllVehicles = function() {
   debug('fetchAllVehicles');
   return storage.fetchAll('bev');
+};
+
+BEV.deleteVehicle = function(id) {
+  debug('deleteVehicle');
+  return storage.deleteEntry('bev', id);
 };
