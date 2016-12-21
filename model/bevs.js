@@ -35,3 +35,13 @@ BEV.createVehicle = function(_vehicle) {
     return Promise.reject(err);
   };
 };
+
+BEV.fetchVehicle = function(id) {
+  debug('fetchVehicle');
+  return storage.fetchEntry('bev', id);
+};
+
+BEV.fetchAllVehicles = function() {
+  debug('fetchAllVehicles');
+  return storage.fetchAll('bev');
+};
