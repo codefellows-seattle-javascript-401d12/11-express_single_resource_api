@@ -18,7 +18,7 @@ describe('BEV Routes', function() {
   describe('POST: api/bev', function() {
     it('should throw a 400 \'bad request\' error', function(done) {
       request.post('http://localhost:3000/api/bev')
-      .send()
+      .send({})
       .end((err, res) => {
         expect(res.status).to.equal(400);
         done();
