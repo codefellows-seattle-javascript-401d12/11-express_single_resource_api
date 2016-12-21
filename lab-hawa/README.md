@@ -95,7 +95,7 @@ X-Powered-By: Express
 **DELETE Request:**
 
 >**In a new terminal window, send a `DELETE` request by using the command:**
->`http DELETE localhost:8000/api/dog?id=<id>`
+>`http DELETE localhost:8000/api/spiritAnimal?id=<id>`
 
 The a successful response should return a **204** status code with no content.
 Here's a successful DELETE request and response (which returns no content):
