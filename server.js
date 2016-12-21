@@ -37,6 +37,12 @@ app.get('/api/bev', function(req, res, next) {
   };
 });
 
+app.delete('/api/bev', function(req, res, next) {
+  BEV.deleteVehicle(req.query.id)
+  .then( vehicle => res.json(vehicle))
+  .catch( err => next(err));
+});
+
 app.listen(PORT, () => {
   console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
