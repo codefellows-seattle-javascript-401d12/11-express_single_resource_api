@@ -26,7 +26,7 @@ app.get('/api/simple_resource', function(req, res, next){
   debug('GET /api/simple_resource');
 
   storage.fetch('simple_resource', req.query.id)
-  .then(resource => res.send(resource))
+  .then(resource => res.json(resource))
   .catch(err => next(err));
 });
 
@@ -44,7 +44,6 @@ app.delete('/api/simple_resource', function(req, res, next){
 
   storage.del('simple_resource', req.query.id)
   .then(msg =>{
-    console.log('msg:-', msg);
     res.json(msg);
   })
   .catch( err => next(err));
