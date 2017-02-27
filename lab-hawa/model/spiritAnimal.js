@@ -17,7 +17,8 @@ const SpiritAnimal = module.exports = function(name, spiritAnimal, spiritAnimalN
   this.spiritAnimal = spiritAnimal;
   this.spiritAnimalName = spiritAnimalName;
 };
-
+//this is a wrapper method. Static = not instantiated on the object. If we console log 'this', 
+//we get back a constructor averse a the properties of a constructor.
 SpiritAnimal.createSpiritAnimal = function (_spiritAnimal) {
   debug('createItem -- spiritAnimal.js');
 
