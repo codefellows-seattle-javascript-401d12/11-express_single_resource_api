@@ -49,7 +49,7 @@ describe('Spirit Animal Routes', function() {
 
   describe('GET: /api/spiritAnimal', function() {
     it('should return a spirit animal', function(done) {
-      request.get(`localhost:3000/api/spiritAnimal?id=${spiritAnimal.id}`)
+      request.get(`localhost:3000/api/spiritAnimal/${spiritAnimal.id}`)
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(200);
@@ -74,7 +74,7 @@ describe('Spirit Animal Routes', function() {
 
   describe('DELETE: /api/spiritAnimal', function() {
     it('should return no content', function(done) {
-      request.delete(`localhost:3000/api/spiritAnimal?id=${spiritAnimal.id}`)
+      request.delete(`localhost:3000/api/spiritAnimal/${spiritAnimal.id}`)
       .end((err, res) => {
         expect(res.status).to.equal(204);
         expect(res.body.title).to.equal(undefined);
