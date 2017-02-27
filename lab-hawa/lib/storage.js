@@ -31,7 +31,7 @@ exports.fetchItem = function(schemaName, id) {
     let item = JSON.parse(data.toString());
     return item;
   })
-  .catch( err => Promise.reject(createError(500, err.message)));
+  .catch( err => Promise.reject(createError(404, err.message)));
 };
 
 exports.deleteItem = function(schemaName, id) {
@@ -40,5 +40,7 @@ exports.deleteItem = function(schemaName, id) {
   if(!schemaName) return Promise.reject(new Error('expected schema name'));
   if (!id) return Promise.reject(createError(400, 'expected id'));
 
-  return fs.unlinkProm(`${__dirname}/../data/${schemaName}/${id}.json`);
+  return fs.unlinkProm(`${__dirname}/../data/${schemaName}/${id}.json`)
+  .then(() => Promise.resolve())
+  .catch(err => Promise.reject(createError(404, err.message)));
 };

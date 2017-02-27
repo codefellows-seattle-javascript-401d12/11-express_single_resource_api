@@ -22,6 +22,29 @@ describe('Spirit Animal Routes', function() {
         done();
       });
     });
+
+    it('Should return a status of 400 and bad request with no body', done => {
+      request
+      .post('localhost:3000/api/spiritAnimal')
+      .end((err, res) => {
+        expect(err).to.be.an('error');
+        expect(res.status).to.equal(400);
+        expect(res.body.id).to.equal(undefined);
+        done();
+      });
+    });
+
+    it('Should return a status of 400 and bad request with wrong body inputs', done => {
+      request
+      .post('localhost:3000/api/spiritAnimal')
+      .send({hello: 'World', world: 'Hello'})
+      .end((err, res) => {
+        expect(err).to.be.an('error');
+        expect(res.status).to.equal(400);
+        expect(res.body.id).to.equal(undefined);
+        done();
+      });
+    });
   });
 
   describe('GET: /api/spiritAnimal', function() {
@@ -33,6 +56,17 @@ describe('Spirit Animal Routes', function() {
         expect(res.body.name).to.equal('Hawa');
         expect(res.body.spiritAnimal).to.equal('pink dragon');
         expect(res.body.spiritAnimalName).to.equal('Simba');
+        done();
+      });
+    });
+
+    it('Should return 404 not found for a good request, but wrong ID', done => {
+      request
+      .get('localhost:3000/api/spiritAnimal?id=22')
+      .end((err, res) => {
+        expect(err).to.be.an('error');
+        expect(res.status).to.equal(404);
+        expect(res.body.name).to.equal(undefined);
         done();
       });
     });
